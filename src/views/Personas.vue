@@ -15,21 +15,20 @@
           		<div class="input-group">
           			<span class="input-group-addon">$</span>
           			<input type="number" class="form-input" v-model="persona.puso" />
-          			<button class="btn btn-primary input-group-btn" @click="sacarPersona(persona, index)"><font-awesome-icon icon="trash" /></button>
+          			<button class="btn btn-dark input-group-btn" @click="sacarPersona(persona, index)"><font-awesome-icon icon="trash" /></button>
           		</div>
           	</td>
           </tr>
 				</tbody>
       </table>
-	  	<button class="btn btn-link" @click="agregarPersona">
+	  	<button class="btn btn-link text-dark" @click="agregarPersona">
 	  		<font-awesome-icon icon="plus" class="mr-2"></font-awesome-icon> &nbsp;Agregar persona
 	  	</button>
 		</div>
 
 		<!-- volver -->
 		<div class="column col-12 my-4">
-			<router-link to="/" class="btn mr-2">Atrás</router-link>
-			<router-link to="/cuentas" class="btn btn-primary" :disabled="personas.length < 2 || total < 1">Calcular</router-link>
+			<router-link to="/cuentas" class="btn btn-outline-dark" :disabled="personas.length < 2 || total < 1">Calcular</router-link>
 	  </div>
 	</div>
 </template>

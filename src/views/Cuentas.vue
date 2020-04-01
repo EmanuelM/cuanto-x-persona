@@ -11,8 +11,8 @@
     </div>
 
     <!-- tabla -->
-    <div class="column col-12">
-    	<table class="table table-striped table-scroll">
+    <div class="column col-12 table-responsive">
+    	<table class="table table-striped">
       	<thead>
         	<tr class="text-center">
           	<th></th>
@@ -29,8 +29,8 @@
 						<td :class="{'text-error': persona.debe}">{{ persona.debe ? '$' + persona.debe : '-' }}</td>
 						<td :class="{'text-success': persona.cobra}">{{ persona.cobra ? '$' + persona.cobra : '-' }}</td>
 						<td>
-							<div class="form-group">
-							  	<label class="form-switch">
+							<div class="form-group d-flex">
+							  	<label class="form-switch p-centered">
 							    	<input type="checkbox" v-model="persona.listo" :checked="persona.listo">
 							    	<i class="form-icon"></i>
 							  	</label>
@@ -42,7 +42,7 @@
 	  </div>
 
 		<!-- redondear resultados -->
-    <div class="column col-12">
+    <div class="column col-12 mt-2">
       <div class="form-group float-right">
         <label class="form-checkbox">
         	<input type="checkbox" v-model="redondear" :checked="redondear" />
@@ -50,11 +50,6 @@
         </label>
       </div>
     </div>
-
-	  <!-- btns -->
-	  <div class="column col-12 my-4 text-center">
-	    <router-link to="/personas" class="btn btn-back">Atrás</router-link>
-	  </div>
   </div>
 </template>
 
@@ -113,5 +108,15 @@
 <style>
 	h4, h6 {
 		font-weight: normal;
+	}
+
+	div.table-responsive {
+		display: block;
+		width: 100%;
+		overflow-x: auto;
+	}
+
+	.form-switch {
+		padding-left: 1.2rem;
 	}
 </style>
