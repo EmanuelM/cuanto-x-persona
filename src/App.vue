@@ -16,6 +16,10 @@
     components: {
       Navbar,
     },
+    mounted: function() {
+      if (!localStorage._db) localStorage._db = JSON.stringify([]);
+      this.$store.dispatch('setGuardados', JSON.parse(localStorage._db));
+    },
   }
 </script>
 
@@ -25,7 +29,5 @@
   @import "./css/libs/spectre-icons.min.css";
   @import "./css/libs/b4-utilities.min.css";
 
-  header {
-    background-color: #000;
-  }
+  @import "./css/cuanto-x-persona.css";
 </style>

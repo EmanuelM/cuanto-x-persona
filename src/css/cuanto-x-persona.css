@@ -1,0 +1,108 @@
+header {
+	background-color: #000;
+}
+
+h4, h6 {
+	font-weight: normal;
+}
+
+div.table-responsive {
+	display: block;
+	width: 100%;
+	overflow-x: auto;
+}
+
+.btn-link {
+	color: #303742 !important;
+}
+
+.btn-link:focus {
+	box-shadow: 0 0 0 0.1rem #30374226;
+}
+
+/**
+ * Navbar
+ */
+header.navbar {
+	background-color: #cfd8dc;
+	color: #fff;
+}
+
+kbd {
+	font-size: 1em !important;
+}
+
+a.p-0 {
+	height: auto;
+}
+
+/**
+ * Botón primario
+ */
+.btn-dark {
+	background: #303742;
+	color: #fff !important;
+	border: .05rem solid #303742;
+}
+
+.btn-dark:focus, .btn-dark:active, .btn-dark:hover {
+	background: #fff;
+	color: #303742 !important;
+	border: .05rem solid #303742;
+}
+
+.btn-dark:disabled {
+	background-color: #fff;
+	color: #000;
+	border: .05rem solid #999;
+}
+
+/**
+ * Botón secundario
+ */
+.btn-outline-dark {
+	background: #fff;
+	color: #303742 !important;
+	border: .05rem solid #303742;
+}
+
+.btn-outline-dark:focus, .btn-outline-dark:active, .btn-outline-dark:hover {
+	background: #303742;
+	color: #fff !important;
+	border: .05rem solid #303742;
+}
+
+.btn-outline-dark:disabled {
+	background-color: #fff;
+	color: #000;
+	border: .05rem solid #999;
+}
+
+/**
+ * Form inputs
+ */
+.form-input:focus {
+	border-color: #7d7d7d;
+	box-shadow: 0 0 .1rem 0 #30374247;
+}
+
+.form-switch {
+	padding-left: 1.2rem;
+}
+
+.form-checkbox input:checked+.form-icon,
+.form-radio input:checked+.form-icon,
+.form-switch input:checked+.form-icon
+{
+	background: #303742;
+	border-color: #000;
+	box-shadow: none;
+}
+
+.form-checkbox input:focus+.form-icon,
+.form-radio input:focus+.form-icon,
+.form-switch input:focus+.form-icon
+{
+	border-color: #bcc3ce;
+	box-shadow: 0 0 .1rem 0 #6d6d6d;
+}

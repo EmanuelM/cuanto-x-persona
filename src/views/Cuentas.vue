@@ -50,10 +50,17 @@
         </label>
       </div>
     </div>
+
+    <!-- guardar -->
+    <div class="column col-12 mt-2">
+			<button class="btn btn-dark" @click="guardarCuenta">Guardar</button>
+    </div>
   </div>
 </template>
 
 <script>
+  import { DateTime } from 'luxon';
+
 	export default {
 		name: 'Cuentas',
 		data: () => ({
@@ -62,6 +69,9 @@
 			redondear: false,
 		}),
 		computed: {
+			guardados: function() {
+				return this.$store.getters.getGuardados;
+			},
 			cuentas: function() {
 				let personas = this.$store.getters.getPersonas;
 
@@ -101,22 +111,22 @@
 
 				return personas;
 			},
-		}
+		},
+		methods: {
+			guardarCuenta: function() {
+				let cuenta = {
+					id: this.guardados.length + 1,
+					fecha: DateTime.local().setLocale('es-AR').toFormat('d LLLL, yyyy'),
+					personas: this.cuentas,
+				};
+
+				this.$store.dispatch('guardarCuenta', cuenta);
+			},
+		},
+		watch: {
+			guardados: function() {
+				localStorage._db = JSON.stringify(this.guardados);
+			},
+		},
 	}
 </script>
-
-<style>
-	h4, h6 {
-		font-weight: normal;
-	}
-
-	div.table-responsive {
-		display: block;
-		width: 100%;
-		overflow-x: auto;
-	}
-
-	.form-switch {
-		padding-left: 1.2rem;
-	}
-</style>

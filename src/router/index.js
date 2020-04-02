@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Personas from '../views/Personas.vue'
 import Cuentas from '../views/Cuentas.vue'
+import Guardados from '../views/Guardados.vue'
 
 Vue.use(VueRouter)
 
@@ -22,7 +23,12 @@ const routes = [
     path: '/cuentas',
     name: 'cuentas',
     component: Cuentas,
-  }
+  },
+  {
+    path: '/guardados',
+    name: 'guardados',
+    component: Guardados,
+  },
 ]
 
 const router = new VueRouter({
