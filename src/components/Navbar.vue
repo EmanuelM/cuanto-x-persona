@@ -1,7 +1,8 @@
 <template>
 	<header class="navbar p-3">
     <section class="navbar-section">
-    	<a v-show="$route.name != 'Home'" href="#" @click.prevent="$router.back()" class="btn btn-link text-dark p-0">
+      <!-- ir para atrás -->
+    	<a v-show="$route.name != 'home'" href="#" @click.prevent="$router.back()" class="btn btn-link text-dark p-0">
     		<font-awesome-icon icon="arrow-left" class="mr-1" />
     	</a>
     </section>
@@ -9,7 +10,8 @@
     	<kbd class="navbar-brand">Cuánto x Persona</kbd>
     </section>
     <section class="navbar-section">
-    	<router-link v-show="$route.name != 'Guardados'" to="/guardados" class="btn btn-link text-dark p-0">
+      <!-- ver cuentas guardadas -->
+    	<router-link v-show="$route.name != 'guardados'" to="guardados" class="btn btn-link text-dark p-0">
     		<font-awesome-icon icon="history" class="mr-1" />
     	</router-link>
     </section>

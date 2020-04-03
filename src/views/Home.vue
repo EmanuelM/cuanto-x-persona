@@ -18,9 +18,9 @@
 	  	totalPersonas: 0,
 	  }),
 	  methods: {
+	  	// crear N personas
 	  	crearPersonas: function() {
 	  		this.$store.dispatch('crearPersonas', this.totalPersonas);
-
 	  		this.$router.push('/personas');
 	  	},
 	  }

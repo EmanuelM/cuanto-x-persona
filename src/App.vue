@@ -17,6 +17,7 @@
       Navbar,
     },
     mounted: function() {
+      // cargar cuentas guardades de localStorage
       if (!localStorage._db) localStorage._db = JSON.stringify([]);
       this.$store.dispatch('setGuardados', JSON.parse(localStorage._db));
     },

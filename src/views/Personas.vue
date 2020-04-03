@@ -40,9 +40,11 @@
 			total: 0,
 		}),
 		methods: {
+			// agregar una nueva persona
 			agregarPersona: function() {
 				this.$store.dispatch('agregarPersona');
 			},
+			// borrar persona
 			sacarPersona: function(persona, index) {
 				this.$store.dispatch('sacarPersona', index);
 			},

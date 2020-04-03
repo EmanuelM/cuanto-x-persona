@@ -1,5 +1,12 @@
 <template>
 	<div class="columns">
+		<div class="column col-12 mb-3" v-if="alerta">
+			<div class="toast toast-success">
+				<button class="btn btn-clear float-right" @click="cerrarAlerta"></button>
+  			Cuenta guardada correctamente
+			</div>
+		</div>
+
   	<!-- hero -->
   	<div class="column col-12 mb-4">
       <div class="card">
@@ -30,10 +37,10 @@
 						<td :class="{'text-success': persona.cobra}">{{ persona.cobra ? '$' + persona.cobra : '-' }}</td>
 						<td>
 							<div class="form-group d-flex">
-							  	<label class="form-switch p-centered">
-							    	<input type="checkbox" v-model="persona.listo" :checked="persona.listo">
-							    	<i class="form-icon"></i>
-							  	</label>
+						  	<label class="form-switch p-centered">
+						    	<input type="checkbox" v-model="persona.listo" :checked="persona.listo">
+						    	<i class="form-icon"></i>
+						  	</label>
 							</div>
 						</td>
 					</tr>
@@ -52,7 +59,7 @@
     </div>
 
     <!-- guardar -->
-    <div class="column col-12 mt-2">
+    <div class="column col-12 mt-2 text-center">
 			<button class="btn btn-dark" @click="guardarCuenta">Guardar</button>
     </div>
   </div>
@@ -67,11 +74,14 @@
 			total: 0,
 			cadaUno: 0,
 			redondear: false,
+			alerta: false,
 		}),
 		computed: {
+			// obtener cuentas guardadas
 			guardados: function() {
 				return this.$store.getters.getGuardados;
 			},
+			// realizar las cuentas sobre las personas actuales
 			cuentas: function() {
 				let personas = this.$store.getters.getPersonas;
 
@@ -113,14 +123,20 @@
 			},
 		},
 		methods: {
+			// guardar cuenta en localStorage
 			guardarCuenta: function() {
 				let cuenta = {
-					id: this.guardados.length + 1,
+					id: this.guardados.length ? (this.guardados[this.guardados.length-1].id + 1) : 1,
 					fecha: DateTime.local().setLocale('es-AR').toFormat('d LLLL, yyyy'),
-					personas: this.cuentas,
+					personas: JSON.parse(JSON.stringify(this.cuentas)),
 				};
 
 				this.$store.dispatch('guardarCuenta', cuenta);
+				this.alerta = true;
+			},
+			// cerrar alerta
+			cerrarAlerta: function() {
+				this.alerta = false;
 			},
 		},
 		watch: {
