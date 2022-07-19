@@ -7,7 +7,7 @@
     	</a>
     </section>
   	<section class="center">
-    	<kbd class="navbar-brand">Cuánto x Persona</kbd>
+    	<span class="navbar-brand text-dark text-bold">Cuánto x Persona</span>
     </section>
     <section class="navbar-section">
       <!-- ver cuentas guardadas -->

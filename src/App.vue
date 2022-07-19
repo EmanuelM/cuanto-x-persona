@@ -2,7 +2,7 @@
   <div id="app">
     <Navbar />
 
-    <div class="container mt-3">
+    <div class="container grid-lg mt-3">
       <router-view/>
     </div>
   </div>
@@ -19,7 +19,7 @@
     mounted: function() {
       // cargar cuentas guardades de localStorage
       if (!localStorage._db) localStorage._db = JSON.stringify([]);
-      this.$store.dispatch('setGuardados', JSON.parse(localStorage._db));
+      this.$store.dispatch('setBills', JSON.parse(localStorage._db));
     },
   }
 </script>

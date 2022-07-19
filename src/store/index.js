@@ -5,117 +5,73 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-  	personas: [],
-    guardados: [],
+  	people: [],
+    billsStored: [],
   },
   mutations: {
-    /**
-     * Cargar N personas la cuenta actual
-     * @param {array} personas
-     */
-  	crearPersonas: function(state, personas) {
-  		state.personas = personas;
+  	createPeople: function(state, people) {
+  		state.people = people;
   	},
-    /** Agregar una nueva persona a la cuenta actual */
-  	agregarPersona: function(state) {
-  		state.personas.push({
-  			nombre: 'Persona ' + (state.personas.length+1),
-  			puso: 0,
-  			debe: 0,
-  			cobra: 0,
-  			listo: false,
+  	addPerson: function(state) {
+  		state.people.push({
+  			name: 'Persona ' + (state.people.length + 1),
+  			put: 0,
+  			owe: 0,
+  			receive: 0,
+  			ready: false,
   		});
   	},
-    /**
-     * Sacar a persona de la cuenta actual
-     * @param {int} index
-     */
-  	sacarPersona: function(state, index) {
-  		state.personas.splice(index, 1);
+  	removePerson: function(state, index) {
+  		state.people.splice(index, 1);
   	},
-    /**
-     * Setear guardados traidos de localStorage
-     * @param {array} guardados
-     */
-    setGuardados: function(state, guardados) {
-      state.guardados = guardados;
+    setBills: function(state, billsStored) {
+      state.billsStored = billsStored;
     },
-    /**
-     * Guardar cuenta actual
-     * @param  {array} cuenta
-     */
-    guardarCuenta: function(state, cuenta) {
-      state.guardados.push(cuenta);
+    saveBill: function(state, bill) {
+      state.billsStored.push(bill);
     },
-    /**
-     * Cargar cuenta previamente guardada
-     * @param {array} personas
-     */
-    setPersonas: function(state, personas) {
-      state.personas = personas;
+    setPeople: function(state, people) {
+      state.people = people;
     },
   },
   actions: {
-    /**
-     * Cargar N personas la cuenta actual
-     * @param {int} total
-     */
-  	crearPersonas: function(context, total) {
-  		let personas = [];
+  	createPeople: function(context, total) {
+  		let people = [];
 
   		for (var i = 0; i < total; i++) {
-  			personas.push({
-  				nombre: 'Persona ' + (i+1),
-  				puso: 0,
-  				debe: 0,
-  				cobra: 0,
-  				listo: false,
+  			people.push({
+  				name: 'Persona ' + (i+1),
+  				put: 0,
+  				owe: 0,
+  				receive: 0,
+  				ready: false,
   			});
   		}
 
-  		context.commit('crearPersonas', personas);
+  		context.commit('createPeople', people);
   	},
-    /** Agregar una nueva persona a la cuenta actual */
-  	agregarPersona: function(context) {
-  		context.commit('agregarPersona');
+  	addPerson: function(context) {
+  		context.commit('addPerson');
   	},
-    /**
-     * Sacar a persona de la cuenta actual
-     * @param {int} index
-     */
-  	sacarPersona: function(context, index) {
-  		context.commit('sacarPersona', index);
+  	removePerson: function(context, index) {
+  		context.commit('removePerson', index);
   	},
-    /**
-     * Setear guardados traidos de localStorage
-     * @param {array} guardados
-     */
-    setGuardados: function(context, guardados) {
-      context.commit('setGuardados', guardados);
+    setBills: function(context, billsStored) {
+      context.commit('setBills', billsStored);
     },
-    /**
-     * Guardar cuenta actual
-     * @param  {array} cuenta
-     */
-    guardarCuenta: function(context, cuenta) {
-      context.commit('guardarCuenta', cuenta);
+    saveBill: function(context, bill) {
+      context.commit('saveBill', bill);
     },
-    /**
-     * Cargar cuenta previamente guardada
-     * @param {array} personas
-     */
-    setPersonas: function(context, personas) {
-      context.commit('setPersonas', personas);
+    setPeople: function(context, personas) {
+      context.commit('setPeople', personas);
     },
   },
   getters: {
-    /** Obtener cuenta actual */
-  	getPersonas: function(state) {
-  		return state.personas;
+  	getPeople: function(state) {
+  		return state.people;
   	},
-    /** Obtener cuentas guardadas */
-    getGuardados: function(state) {
-      return state.guardados;
+    getBillsStored: function(state) {
+      return state.billsStored;
     }
   }
 })

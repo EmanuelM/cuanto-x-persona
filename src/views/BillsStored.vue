@@ -1,9 +1,9 @@
 <template>
 	<div class="columns">
 		<div class="column col-12 px-3">
-			<CuentaCard v-for="(cuenta, index) in guardados" :key="cuenta.id" :cuenta="cuenta" />
+			<BillCard v-for="(bill) in billsStored" :key="bill.id" :bill="bill" />
 
-			<div class="empty" v-if="guardados.length == 0">
+			<div class="empty" v-if="billsStored.length == 0">
 			  <div class="empty-icon">
 					<font-awesome-icon icon="save" />
 			  </div>
@@ -15,17 +15,16 @@
 </template>
 
 <script>
-	import CuentaCard from '@/components/CuentaCard.vue';
+	import BillCard from '@/components/BillCard.vue';
 
 	export default {
-		name: 'Guardados',
+		name: 'BillsStored',
 		components: {
-			CuentaCard,
+			BillCard,
 		},
 		computed: {
-			// obtener guardados y ordenar de manera descendente por ID
-			guardados: function() {
-				return this.$store.getters.getGuardados.sort((rowA, rowB) => {
+			billsStored: function() {
+				return this.$store.getters.getBillsStored.sort((rowA, rowB) => {
 					return rowB.id - rowA.id
 				});
 			},
